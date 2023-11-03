@@ -7,4 +7,4 @@ def salute_recruiter(request):
     name = request.GET.get('name', 'Recruto')
     message = request.GET.get('message', 'Давай дружить')
     salute = Salute.objects.create(name=name, message=message)
-    return HttpResponse(f'Привет, {salute.name}! {salute.message}!')
+    return render(request, 'salute_template.html', {'salute': salute})
